@@ -1,10 +1,3 @@
-<?php
-    class Weather(){
-        
-        public $tempConditions =['cold','mild','warm'];
-
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
