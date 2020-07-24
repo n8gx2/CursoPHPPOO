@@ -3,17 +3,27 @@
         //properties methods
         public $userName = '';
         public $email = '';
+        public $role = 'member';
 
         public function __construct($username, $email){
             $this->userName = $username;
             $this->email = $email;
         }
 
+        public function __destruct(){
+            echo $this->userName ."was removed<br>";
+        }
+
+        public function __clone(){
+            $this->email = $this->email."Was cloned<br>";
+        }
         public function addFriend(){
             // $userName = 'Octavio2';
             return $this->userName;
         }
-
+        public function message(){
+            return $this->email;
+        }
         //getters
         public function getEmail(){
             return $this->email;
@@ -28,25 +38,42 @@
     }
 
     class AdminUser extends User{
+        public $level;
+        public $role = 'admin';
+
+        public function __construct($username, $email ,$level){
+            $this->level = $level;
+            // $this->userName = $username;
+            // $this->email = $email;
+            parent::__construct($username, $email);
+        }
+        public function message(){
+            return $this->email;
+        }
 
     }
 
     $userOne = new User('octavio','octavio@gmail.com');
     $userTwo = new User('amador','amador@gmail.com');
-    $userThree = new User('vanessa','vanessa@gmail.com');
+    $userThree = new AdminUser('vanessa','vanessa@gmail.com',3);
+    unset($userOne);
+    $userFour = clone $userOne;
+
+    echo "userOne->getEmail: ".$userOne->getEmail()."<br>";
+    echo "userTwo->getEmail: ".$userTwo->getEmail()."<br>";
+    echo "userThree->getEmail: ".$userThree->getEmail()."<br>";
+    echo "userThree->level: ".$userThree->level."<br>";
+    echo "userThree->message: ".$userThree->message()."<br>";
+    echo "userOne->role: ".$userOne->role."<br>";
+    echo "userThree->role: ".$userThree->role."<br>";
 
 
-    echo "userOne->getEmail: ".$userOne->getEmail()."<br>";;
-    echo "userTwo->getEmail: ".$userTwo->getEmail()."<br>";;
-    echo "userThree->getEmail: ".$userThree->getEmail()."<br>";;
-
-
-    $nameUser= $userOne->addFriend();
-    echo 'This is the class '. get_class($userOne)."<br>";
-    echo 'the user name is '.$nameUser."<br>";
-    echo 'the user name is '.$userOne->userName."<br>";
-    echo 'the user name is '.$userOne->userName2."<br>";
-    echo 'the user name is '.$userOne->addFriend()."<br>";
+    // $nameUser= $userOne->addFriend();
+    // echo 'This is the class '. get_class($userOne)."<br>";
+    // echo 'the user name is '.$nameUser."<br>";
+    // echo 'the user name is '.$userOne->userName."<br>";
+    // echo 'the user name is '.$userOne->userName2."<br>";
+    // echo 'the user name is '.$userOne->addFriend()."<br>";
     // echo 'the user name is '.User::addFriend()."<br>";
 ?>
 
