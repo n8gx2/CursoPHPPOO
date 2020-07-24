@@ -1,3 +1,15 @@
+<?php
+    class Weather {
+
+        public $tempConditions= ['cold','mild','warm'];
+        public function celciusToFarenheit($c){
+
+        }
+        public function determinTempCondition($f){
+            
+        }        
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
