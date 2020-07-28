@@ -8,8 +8,8 @@ body{
     max-width: 300px;
     margin: 0 auto;
   }
-  h2{
-    color: #555;
+  h2{ 
+    color: #554;
   }
   label,input{
     display: block;
