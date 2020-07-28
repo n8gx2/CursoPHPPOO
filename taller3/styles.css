@@ -34,3 +34,8 @@ body{
     border: none;
     border-radius: 10px;
   }
+  div.error {
+    background-color: crimson;
+    color: floralwhite;
+
+  }
